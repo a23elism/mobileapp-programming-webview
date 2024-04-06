@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>Ullas Bageri</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://hammerjs.github.io/dist/hammer.js"></script>
+    <script src="https://raw.githack.com/HGustavs/Shaker.js/master/shaker.js"></script>
+    <script>
+
+        function showPage(p) {
+            pageArr = document.getElementsByClassName("page");
+            for (let i = 0; i < pageArr.length; i++) {
+                let page = pageArr[i];
+                page.style.display = "none";
+            }
+            document.getElementById("page" + p).style.display = "grid";
+ 
+            let btnArr = document.getElementsByClassName("navbar__btn");
+            for (let i = 0; i < btnArr.length; i++) {
+                let btn = btnArr[i];
+                btn.classList.remove("navbar__btn--active");
+            }
+ 
+            btnArr = document.getElementsByClassName("nav" + p);
+            for (let i = 0; i < btnArr.length; i++) {
+                let btn = btnArr[i];
+                btn.classList.add("navbar__btn--active");
+            }
+
+            initShake();
+            initHammer();
+        }
+ 
+        function initHammer(){
+ 
+            /* Get the textelement that we want to change */
+            var element = document.getElementById("pressElement");
+
+            /* Show when holding */
+            var hammertime = Hammer(element).on("press", function(event) {
+            element = document.getElementById("tooltip").style.opacity="1";
+            });    
+
+            /* hide when releasing */
+            var hammertime = Hammer(element).on("pressup", function(event) {
+            element = document.getElementById("tooltip").style.opacity="0";
+            });    
+
+        }
+
+        function initPrototype() {
+            console.log("==> Prototype init started.");
+ 
+            showPage(1);
+        }
+
+        function shake(edata) {             
+            var element = document.getElementById("content");
+            if (element.className == "normal"){
+                element.className = "darker";
+            } else {
+                element.className = "normal";
+            }
+        }
+ 
+        function initShake() {
+            document.getElementById("content").className="normal";
+ 
+            shaker.on("shake",function(edata) {
+                shake(edata);
+            });
+        }
+
+    </script>
+
+    <style>
+
+        .normal{
+            background-color: #f1c0ff;
+            color: #543715;
+            font-family: 'Luckiest Guy', cursive;
+            transition: 500ms;
+        }
+
+        .darker{
+            background-color: #733284;
+            color: #543715;
+            font-family: 'Luckiest Guy', cursive;
+            transition: 500ms;
+        }
+
+        .prototype-start-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(50, 50, 50, 0.5);
+            z-index: 1000;
+        }
+ 
+        .navbar__btn {
+            border-radius: 5px;
+            text-align: center;
+            display: inline-block;
+            border: 0;
+            margin: 2px;
+            padding: 8px 5px;
+            cursor: default;
+            font-weight: 400;
+        }
+ 
+        .navbar__btn:hover {
+            background-color: #c765a2;
+            transition: 500ms;
+        }
+ 
+        .navbar__btn--primary {
+            background-color: #dc94c0;
+        }
+ 
+        .navbar__btn--active {
+            background-color: #c469a1 !important;
+            color: #000;
+        }
+
+        .banner{
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px;
+            color: #543715;
+            background-color: #a447bb7e;
+            border-radius: 10px;
+        }
+
+        #varor{
+            text-align: center;
+            min-width: 300px;
+            min-height: 300px;
+            margin: auto;
+            padding: 10px;
+        }
+
+        #varor h2{
+            display: block;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #a447bb7e;
+            border-radius: 10px;
+        }
+
+        .grid{
+            display: grid;
+            grid-gap: 50px;
+        }
+
+        .om-grid{
+            display: grid;
+            grid-gap: 50px;
+        }
+
+        .vara{
+            display: block;
+            width: 300px;
+            background-color: #a447bb7e;
+            margin: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 5px 5px 5px #431d4d;
+        }
+
+        figure img{
+            max-width: 75%;
+            margin: auto;
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+
+        .baktext{
+            font-family: sans-serif;
+            position: relative;
+            margin: auto;
+            max-width: 75%;
+            width: fit-content;
+            margin-top: -40px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.295);
+        }
+
+        .bakelse{
+            display: block;
+            font-size: x-large;
+            color: #543715;
+        }
+
+        .order{
+            display: inline-block;
+            color: #543715;
+            text-align: center;
+            width: 75px;
+            margin: 10px;
+            background-color: #dc94c0;
+            box-shadow: black 2px 2px 2px;
+            border-radius: 5px;
+            transition: 500ms;
+        }
+
+        .order:hover{
+            cursor: pointer;
+            color: #b97f02;
+            background-color: #a02cbd;
+            box-shadow: black 2px 2px 2px;
+            border-radius: 5px;
+            transition: 500ms;
+        }
+
+        #om{
+            text-align: center;
+            min-width: 300px;
+            min-height: 300px;
+            margin: auto;
+            padding: 10px;
+        }
+
+        #om h2{
+            display: block;
+            margin: auto;
+            font-size: xx-large;
+        }
+
+        #kontakt{
+            transition: 500ms;
+            text-decoration: underline;
+        }
+
+        #kontakt:hover{
+            transition: 500ms;
+            color: #450057;
+            text-decoration: underline;
+        }
+
+        .omruta{
+            margin: auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 20px;
+            background-color: #a447bb7e;
+            border: solid #543715;
+        }
+
+        #F1{
+            display: block;
+            text-align: center;
+        }
+
+        #F1 .F1text{
+            display: inline-block;
+            background-color: #a447bb7e;
+            position: relative;
+            text-align: center;
+        }
+
+        #recensioner{
+            text-align: center;
+        }
+
+        #recensioner .banner{
+            margin-top: 30px;
+        }
+
+        .tooltipAnchor {
+            position:relative;
+        }
+
+        .tooltip {
+            position:relative;
+            text-align: center;
+            bottom:20px;
+            left:0px;
+            background-color:#f1c0ff;
+            border: solid #543715;
+            border-radius:5px;
+            opacity:0;
+            overflow: hidden;
+            padding:5px;    
+            transition-property:opacity;
+            transition-duration:1.5s;
+            transition-delay: 0s; 
+            transition-timing-function: ease-in;
+        }
+
+        .navbar{
+            background-color: #a447bb;
+        }
+
+        .recensions-block {
+            max-width: 500px;
+            background-color: #a447bb;
+            margin: 10px;
+            padding: 20px;
+            border: solid #543715;
+            border-radius: 5px;
+        }
+
+        .recensions-titel {
+            text-align: center;
+        }
+
+        .recension {
+            border-bottom: solid #543715;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .recension-text{
+            background-color: #f1c0ff;
+            border-radius: 10px;
+        }
+
+        .recension-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .recension-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .betyg {
+            color: #f1c0ff;
+        }
+
+        @media screen and (orientation: landscape){
+            .grid{
+                grid-gap: 10px;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .om-grid{
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .omruta{
+                max-width: 300px;
+            }
+
+            .storruta{
+                grid-column: span 2;
+                max-width: 600px;
+            }
+        }
+
+        @media screen and (max-width: 375px){
+            .grid{
+                grid-template-columns: 1fr;
+            }
+
+            .omruta{
+                max-width: 300px;
+            }
+        }
+
+
+        @media screen and (min-width: 800px){
+            .grid{
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .om-grid{
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .omruta{
+                max-width: 750px;
+            }
+
+            .storruta{
+                grid-column: span 2;
+            }
+        }
+
+        @media screen and (min-width: 1280px){
+            .grid{
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            .om-grid{
+                grid-template-columns: 1fr; 
+            }
+
+            .omruta{
+                max-width: 750px;
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+ 
+<body id="content" class="normal" onload="showPage(0);">
+
+    <div id="page0" class="page">
+        <div class="prototype-start-page">
+            <button class="navbar__btn navbar__btn--primary" type="button" onclick="initPrototype();">Start prototype</button>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <button class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none" style=" background: none; border: none;" onclick="showPage(4)">
+                <img src="./Img/Ullas.png" alt="Logo" width="80" height="60" class="bi d-inline-block align-text-top">
+                <span class="fs-4" style="color:#543715; margin: 10px;">Ullas Bageri</span>
+            </button>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <button class="nav1 navbar__btn navbar__btn--primary navbar__btn--active" type="button" onclick="showPage(1);">Bakelser</button>
+                <button class="nav2 navbar__btn navbar__btn--primary" type="button" onclick="showPage(2);">Om Oss</button>
+                <button class="nav3 navbar__btn navbar__btn--primary" type="button" onclick="showPage(3);">Recensioner</button>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <div id="page1" class="page">
+        <main id="varor">
+            <h1 class="banner">Välkommen till Ullas Bageri</h1>
+            
+            <span id="pressElement" class="tooltipAnchor"><h2>Våra Bakelser</h2><span id="tooltip" class="tooltip">Bakade till perfektion med hjälp av Ullas hemliga recept, av Ulla själv (om hon orkar)</span></span>
+
+            <div class="grid">
+
+                <div class="vara">
+                    <figure class="bakbild">
+                        <img src="./Img/Bullar.jpg" alt="Bild på bullar">
+                        <figcaption class="baktext">
+                            <a href="https://www.flickr.com/photos/magnus_d/5051810917" target="_blank">Kanel Bullar</a>
+                            by <a href="https://www.flickr.com/photos/magnus_d/" target="_blank">Magnus D</a> used under
+                            <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank"> CC BY-SA 2.0 DEED</a>
+                            / Cropped/Edited and rezied from original
+                        </figcaption>
+                    </figure>
+                    <span class="bakelse" onclick="showAlert();">Ullas Bullar (10st) - 180kr</span>
+                    <span class="order">Beställ</span>
+                </div>
+
+                <div class="vara">
+                    <figure class="bakbild">
+                        <img src="./Img/Macarons.jpg" alt="Bild på macarons">
+                        <figcaption class="baktext">
+                            <a href="https://www.flickr.com/photos/grongar/8197357886/" target="_blank">Macarons</a>
+                            by <a href="https://www.flickr.com/photos/grongar/" target="_blank">Rebecca Siegel</a> used under
+                            <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank"> CC BY-SA 2.0 DEED</a>
+                            / Cropped/Edited and rezied from original
+                        </figcaption>
+                    </figure>
+                    <span class="bakelse">Macarons (1 dussin) - 150kr</span>
+                    <span class="order">Beställ</span>
+                </div>
+
+                <div class="vara">
+                    <figure class="bakbild">
+                        <img src="./Img/Cake.png" alt="Bild på rosa tårta">
+                        <figcaption class="baktext">
+                            <a href="https://www.flickr.com/photos/rexness/5919553257/" target="_blank">Pink Rose Cake</a>
+                            by <a href="https://www.flickr.com/photos/rexness/" target="_blank">Rexness</a> used under
+                            <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank"> CC BY-SA 2.0 DEED</a>
+                            / Cropped/Edited and rezied from original
+                        </figcaption>
+                    </figure>
+                    <span class="bakelse">Tårta - 200-500kr</span>
+                    <span class="order">Anpassa</span>
+                </div>
+
+                <div class="vara">
+                    <figure class="bakbild">
+                        <img src="./Img/CakeSF.png" alt="Socker Fri Tårta">
+                        <figcaption class="baktext">
+                            <a href="https://www.flickr.com/photos/rexness/5919553257/" target="_blank">Pink Rose Cake</a>
+                            by <a href="https://www.flickr.com/photos/rexness/" target="_blank">Rexness</a> used under
+                            <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank"> CC BY-SA 2.0 DEED</a>
+                            / Cropped/Edited and rezied from original
+                        </figcaption>
+                    </figure>
+                    <span class="bakelse">Gluten Fri Tårta - 250-550kr</span>
+                    <span class="order">Anpassa</span>
+                </div>
+
+                <div class="vara">
+                    <figure class="bakbild">
+                        <img src="./Img/lev.jpg" alt="Fullkorns lev">
+                        <figcaption class="baktext">
+                            <a href="https://www.flickr.com/photos/danstowell/31441853554/" target="_blank">Whole Wheat Bread</a>
+                            by <a href="https://www.flickr.com/photos/danstowell" target="_blank">danstowell</a> used under
+                            <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank"> CC BY-SA 2.0 DEED</a>
+                            / Cropped/Edited and rezied from original
+                        </figcaption>
+                    </figure>
+                    <span class="bakelse">Fullkorns Lev - 50kr</span>
+                    <span class="order">Beställ</span>
+                </div>
+                
+                <div class="vara">
+                    <figure class="bakbild">
+                        <img src="./Img/Semla.jpg" alt="Semla">
+                        <figcaption class="baktext">
+                            <a href="https://www.flickr.com/photos/131440445@N04/16437598648/" target="_blank">Semla Uneaten</a>
+                            by <a href="https://www.flickr.com/photos/131440445@N04/" target="_blank">Anette Holmqvist</a> used under
+                            <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank"> CC BY-SA 2.0 DEED</a>
+                            / Cropped/Edited and rezied from original
+                        </figcaption>
+                    </figure>
+                    <span class="bakelse">Dulche de leche Semla - 20kr</span>
+                    <span class="order">Beställ</span>
+                </div>
+
+            </div>
+
+            
+        </main>
+    </div>
+ 
+    <div id="page2" class="page">
+        <main id="om">
+            <h1 class="banner">Om Oss</h1>
+
+            <div class="om-grid">
+                <div class="omruta">
+                    <h2>Vad gör vi för någonting?</h2>
+                    <p>
+                        Vi gör <strong>allt</strong> från tårtor till levar, vi är världskända för våran berikning och plasticiteten i våran deg.
+                        <b> Om det finns någonting som du vill förslå som våran nästa bakelse så kan du <a id="kontakt" onclick="">kontakta oss här</a></b>
+                    </p>
+                </div>
+    
+                <div class="omruta">
+                    <h2>Vår Historia</h2>
+                    <p>
+                        Ullas Bageri grundades 1987 och har änn idag stått som en <strong>stämpel</strong> inom bagar kulturen, vårat dussin har
+                        alltid varit billigare än varenda annat bageri kan offra, <b><q>Ullas hemliga recept på fullkorns bröd utan fullkornsmjöl är fortfarande ett
+                        mysterium för oss</q></b>.d.
+                    </p>
+                </div>
+    
+                <div class="omruta storruta">
+                    <h2>Vårat Största Äventyr</h2>
+                    <p>
+                        <strong>Vi är stolta att vara huvud sponsorer</strong> för Braking Point Formula 1 Team. <b><a href="https://www.formula1.com/en/teams.html" target="_blank">Kolla in våra förare och bil här</a></b>.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Consectetur nulla libero laudantium, distinctio aliquid voluptas adipisci architecto, nesciunt repudiandae consequuntur,
+                        fugit consequatur nemo officiis exercitationem. Dolorem quod accusantium illum numquam.
+                    </p>
+    
+                    <figure id="F1">
+                        <img src="./Img/UllasBakingPointF1TeamSmall.png" alt="Ullas Baking Point F1 Team">
+                        <figcaption class="F1text">
+                            <a href="https://www.flickr.com/photos/105731165@N07/32588926224/" target="_blank">Sauber C36</a>
+                            by <a href="https://www.flickr.com/photos/105731165@N07/" target="_blank">Artes Max</a> used under
+                            <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank"> CC BY-SA 2.0 DEED</a>
+                            / Cropped/Edited and rezied from original
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+    </div>
+ 
+    <div id="page3" class="page">
+        <main id="recensioner">
+            
+            <h1 class="banner">Recensioner</h1>
+            
+            <div class="grid">
+                
+                <div class="recensions-block">
+                    <div class="recensions-titel">
+                      <h2>#1 BÄSTA BAGERIET</h2>
+                    </div>
+                    <div class="recension">
+                      <div class="recension-info">
+                        <img src="./Img/1Ullafan.jpg" alt="Användaravatar">
+                        <h3>#1UllaFan</h3>
+                      </div>
+                      <p class="recension-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae elit nec massa rhoncus facilisis. Nullam lobortis, odio ac rutrum.</p>
+                      <div class="betyg">
+                        <span class="material-icons">star</span>
+                        <span class="material-icons">star</span>
+                        <span class="material-icons">star</span>
+                        <span class="material-icons">star</span>
+                        <span class="material-icons">star</span>
+                        <span class="material-icons">star</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="recensions-block">
+                    <div class="recensions-titel">
+                      <h2>Bästa jag bakat idag</h2>
+                    </div>
+                    <div class="recension">
+                      <div class="recension-info">
+                        <h3>Ulla</h3>
+                      </div>
+                      <p class="recension-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae elit nec massa rhoncus facilisis. Nullam lobortis, odio ac rutrum.</p>
+                      <div class="betyg">
+                        <span class="material-icons">star</span>
+                        <span class="material-icons">star</span>
+                        <span class="material-icons">star</span>
+                        <span class="material-icons">star</span>
+                        <span class="material-icons">star</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="recensions-block">
+                    <div class="recensions-titel">
+                      <h2>MMMMMmmmmm</h2>
+                    </div>
+                    <div class="recension">
+                      <div class="recension-info">
+                        <img src="./Img/Allu.jpg" alt="Användaravatar">
+                        <h3>Allu</h3>
+                      </div>
+                      <p class="recension-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae elit nec massa rhoncus facilisis. Nullam lobortis, odio ac rutrum.</p>
+                      <div class="betyg">
+                        <span class="material-icons">star</span>
+                        <span class="material-icons">star</span>
+                        <span class="material-icons">star</span>
+                        <span class="material-icons">star</span>
+                        <span class="material-icons">star_border</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="recensions-block">
+                    <div class="recensions-titel">
+                      <h2>Brödet var ok</h2>
+                    </div>
+                    <div class="recension">
+                      <div class="recension-info">
+                        <img src="./Img/intefagel.jpg" alt="Användaravatar"> <!-- -->
+                        <h3>Inte en fågel</h3>
+                      </div>
+                      <p class="recension-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae elit nec massa rhoncus facilisis. Nullam lobortis, odio ac rutrum.</p>
+                      <div class="betyg">
+                        <span class="material-icons">star</span>
+                        <span class="material-icons">star</span>
+                        <span class="material-icons">star</span>
+                        <span class="material-icons">star_border</span>
+                        <span class="material-icons">star_border</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="recensions-block">
+                    <div class="recensions-titel">
+                      <h2>Precis som hemma</h2>
+                    </div>
+                    <div class="recension">
+                      <div class="recension-info">
+                        <h3>Johan Deg</h3>
+                      </div>
+                      <p class="recension-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae elit nec massa rhoncus facilisis. Nullam lobortis, odio ac rutrum.</p>
+                      <div class="betyg">
+                        <span class="material-icons">star</span>
+                        <span class="material-icons">star</span>
+                        <span class="material-icons">star</span>
+                        <span class="material-icons">star_border</span>
+                        <span class="material-icons">star_border</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="recensions-block">
+                    <div class="recensions-titel">
+                      <h2>SERIÖST!??!?!?!!?</h2>
+                    </div>
+                    <div class="recension">
+                      <div class="recension-info">
+                        <h3>Karin</h3>
+                      </div>
+                      <p class="recension-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae elit nec massa rhoncus facilisis. Nullam lobortis, odio ac rutrum.</p>
+                      <div class="betyg">
+                        <span class="material-icons">star</span>
+                        <span class="material-icons">star_border</span>
+                        <span class="material-icons">star_border</span>
+                        <span class="material-icons">star_border</span>
+                        <span class="material-icons">star_border</span>
+                      </div>
+                    </div>
+                  </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <div id="page4" class="page">
+        <main>
+            <figure class="storbild">
+                <a href="index.html"><img src="./Img/Ullas.png" alt="Ullas Bageri Logga"></a>
+                <figcaption>
+                    <a href="https://www.flickr.com/photos/199319855@N05/53263587810/" target="_blank">Ullas Bageri</a> by 
+                    <a href="https://www.flickr.com/photos/199319855@N05/" target="_blank">Elidon Smajli</a> used under 
+                    <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank">CC0 1.0</a> / Cropped and resized from original
+                </figcaption>
+            </figure>
+        </main>
+    </div>
+</body>
+ 
+</html>

@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showInternalWebPage(){
+        myWebView.loadUrl("file:///android_asset/index.html");
         // TODO: Add your code for showing internal web page here
     }
 
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (id == R.id.action_internal_web) {
+            showInternalWebPage();
             Log.d("==>","Will display internal web page");
             return true;
         }
