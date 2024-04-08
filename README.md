@@ -1,7 +1,6 @@
 
 # Rapport
 
-**Skriv din rapport här!**
 Skapat app som använder sig utav WebView, appen
 använder sig både utav en intern och extern WebView med hjälp
 av en toolbar som kör olika funktioner
