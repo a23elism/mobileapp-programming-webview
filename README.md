@@ -36,7 +36,7 @@ activity_main.xml:
         android:id="@+id/my_webview"/>
 ```
 
-Bilder läggs i samma mapp som markdown-filen.
+Bilder:
 
 Extern WebView
 ![img_3.png](img_3.png)
